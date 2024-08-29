@@ -1,0 +1,16 @@
+.navbar {
+  height: 95px; 
+  padding: 0 20px; 
+  background-color: #292929; 
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  height: 130px; 
+  width: 160px;
+  margin-left: -100px;
+}
