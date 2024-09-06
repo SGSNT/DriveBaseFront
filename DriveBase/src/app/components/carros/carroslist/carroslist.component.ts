@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
 export class CarroslistComponent {
 
   lista: Carro[] = [];
-  carroEdit: Carro = new Carro(0,"","","",new Marca());
+  carroEdit: Carro = new Carro(0,"","","",new Marca(),[]);
   modalService = inject(MdbModalService);
 
   @ViewChild("modalCarroDetalhe") modalCarroDetalhe!: TemplateRef<any>;
@@ -127,7 +127,7 @@ export class CarroslistComponent {
 
     save(){
 
-      this.carroEdit = new Carro(0,"","","",new Marca());
+      this.carroEdit = new Carro(0,"","","",new Marca(),[]);
       this.modalRef = this.modalService.open(this.modalCarroDetalhe);
     }
 

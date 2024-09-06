@@ -10,17 +10,19 @@ import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { CarrosService } from '../../../services/carro.service';
 import Swal from 'sweetalert2';
 import { Marca } from '../../../models/marca';
+import { ProprietariolistComponent } from '../../proprietario/proprietariolist/proprietariolist.component';
+import { Proprietario } from '../../../models/proprietario';
 
 @Component({
   selector: 'app-carrosdetails',
   standalone: true,
-  imports: [MdbFormsModule,FormsModule,MarcaslistComponent,ManutencaolistComponent,],
+  imports: [MdbFormsModule,FormsModule,MarcaslistComponent,ManutencaolistComponent,ProprietariolistComponent  ],
   templateUrl: './carrosdetails.component.html',
   styleUrl: './carrosdetails.component.scss'
 })
 export class CarrosdetailsComponent {
 
-  @Input("carro") carro: Carro = new Carro(0,"","","",new Marca());
+  @Input("carro") carro: Carro = new Carro(0,"","","",new Marca(),[]);
   @Output("retorno") retorno = new EventEmitter<any>();
   router = inject(ActivatedRoute);
   router1 = inject(Router);
@@ -140,6 +142,16 @@ export class CarrosdetailsComponent {
   retornoMarca(marca: Marca){
     this.carro.marca = marca;
     this.modalRef.close();
+  }
+
+  retornoProprietario(proprietarios: Proprietario[]){
+    this.carro.proprietarios = proprietarios;
+    this.modalRef.close();
+  }
+
+  desvincularProprietario(proprietario: Proprietario){
+    let index = this.carro.proprietarios.findIndex(p => {return p.id == proprietario.id});
+    this.carro.proprietarios.splice(index,1);
   }
 
 }

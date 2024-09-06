@@ -1,7 +1,7 @@
 <nav>
   <div class="sideNavBtns">
     <div class="sideNavMainBtns">
-      <a href="#" class="sideNavBtn">
+      <a *ngIf="loginService.hasPermission('admin')" href="#" class="sideNavBtn">
         <i class="fas fa-car"></i>
         <p>Carro</p>
       </a>
@@ -12,6 +12,10 @@
       <a href="admin/proprietario" class="sideNavBtn">
         <i class="fas fa-user"></i>
         <p>Proprietário</p>
+      </a>
+      <a href="#" class="sideNavBtn">
+        <i class="fas fa-cog"></i>
+        <p>Manutenção</p> 
       </a>
       <a href="admin/venda" class="sideNavBtn">
         <i class="fas fa-shopping-cart"></i>

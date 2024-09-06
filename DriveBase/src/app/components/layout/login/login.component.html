@@ -1,32 +1,32 @@
 <div class="container">
-    <div class="row">
-        <!-- Seção da imagem -->
-        <div class="col image-section">
-            <div class="illustration">
-                <!-- Adicionar a imagem ilustrativa aqui -->
-                <img src="../../../../assets/RDUR5825-730x487.jpg" alt="Ilustração">
-            </div>
-        </div>
+  <div class="row">
+      <!-- Seção da imagem -->
+      <div class="col image-section">
+          <div class="illustration">
+              <!-- Adicionar a imagem ilustrativa aqui -->
+              <img src="../../../../assets/RDUR5825-730x487.jpg" alt="Ilustração">
+          </div>
+      </div>
 
-        <!-- Formulário de Login -->
-        <div class="col form-section">
-            <div class="card">
-                <div class="card-body">
-                    <div class="icon-section">
-                        <img src="../../../../assets/NicePng_user-icon-png_1280406.png" alt="Ícone de usuário">
-                    </div>
-                    <div class="form-control form-outline">
-                        <input type="text" id="usuario" class="form-input" [(ngModel)]="login" required/>
-                        <label for="usuario">Login</label>
-                    </div>
-                    <div class="form-control form-outline">
-                        <input type="password" id="senha" class="form-input" [(ngModel)]="senha" required />
-                        <label for="senha">Senha</label>
-                    </div>
+      <!-- Formulário de Login -->
+      <div class="col form-section">
+          <div class="card">
+              <div class="card-body">
+                  <div class="icon-section">
+                      <img src="../../../../assets/NicePng_user-icon-png_1280406.png" alt="Ícone de usuário">
+                  </div>
+                  <div class="form-control form-outline">
+                      <input type="text" id="usuario" class="form-input" [(ngModel)]="login.username" (keyup.enter)="logar()" required/>
+                      <label for="usuario">Login</label>
+                  </div>
+                  <div class="form-control form-outline">
+                      <input type="password" id="senha" class="form-input" [(ngModel)]="login.password" (keyup.enter)="logar()" required />
+                      <label for="senha">Senha</label>
+                  </div>
 
-                    <button type="button" class="btn" (click)="logar()">Login</button>
-                </div>
-            </div>
-        </div>
-    </div>
+                  <button type="button" class="btn" (click)="logar()">Login</button>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
