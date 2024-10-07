@@ -1,0 +1,65 @@
+section {
+    max-width: 800px; 
+    margin: 150px auto; 
+    padding: 20px; 
+    background-color: #fff; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+
+header {
+    text-align: center;
+}
+
+
+form {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+
+fieldset {
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    padding: 15px;
+    margin: 10px 0; 
+    width: 100%; 
+}
+
+label {
+    display: block;
+    margin-bottom: 10px; 
+}
+
+
+.btn-filtrar-log {
+    margin-top: 20px; 
+    padding: 10px 20px; 
+    background-color: #007bff; 
+    color: white; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.btn-filtrar-log:hover {
+    background-color: #0056b3; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-top: 20px; 
+}
+
+th, td {
+    padding: 10px; 
+    text-align: left; 
+    border-bottom: 1px solid #ccc; 
+}
+
+th {
+    background-color: #f2f2f2;
+} 

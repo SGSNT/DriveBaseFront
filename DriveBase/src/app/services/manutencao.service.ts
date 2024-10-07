@@ -10,7 +10,7 @@ export class ManutencaoService {
 
   http = inject(HttpClient);
 
-  API = "http://localhost:8081/api/manutencao";
+  API = "http://192.168.56.3:8081/api/manutencao";
 
   constructor() { }
 
@@ -18,15 +18,15 @@ export class ManutencaoService {
     return this.http.get<Manutencao[]>(this.API+"/findAll");
   }
 
-  delete(id: number): Observable<String>{
-    return this.http.delete<String>(this.API+"/delete/"+id,{responseType: 'text' as 'json'});
+  delete(id: number): Observable<string>{
+    return this.http.delete<string>(this.API+"/delete/"+id,{responseType: 'text' as 'json'});
   }
 
-  save(manutencao: Manutencao): Observable<String>{
-    return this.http.post<String>(this.API+"/save",manutencao,{responseType: 'json'});
+  save(manutencao: Manutencao): Observable<string>{
+    return this.http.post<string>(this.API+"/save",manutencao,{responseType: 'json'});
   }
 
-  update(manutencao: Manutencao, id: number): Observable<String>{
+  update(manutencao: Manutencao, id: number): Observable<string>{
     return this.http.put<string>(this.API+"/update/"+id,manutencao,{responseType: 'json'});
   }
 

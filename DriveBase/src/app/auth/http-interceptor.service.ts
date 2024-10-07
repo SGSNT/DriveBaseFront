@@ -20,10 +20,10 @@ export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
 	  
 	  
         if (err.status === 401) {
-          alert('401 - tratar aqui');
+          alert('Você não está autorizado a acessar esta página. Por favor, faça login.');
           router.navigate(['/login']);
         } else if (err.status === 403) {
-          alert('403 - tratar aqui');
+          alert('Você não tem permissão para acessar esta página. Por favor, faça login');
 		  router.navigate(['/login']);
         } else {
           console.error('HTTP error:', err);

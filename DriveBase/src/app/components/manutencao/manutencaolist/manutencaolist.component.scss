@@ -1,0 +1,82 @@
+.container .card {
+    background-color: #292929;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border: none;
+    margin-left: 198px;
+    margin-top: 140px;
+}
+
+.container .table {
+    background-color: #333333; 
+    border-radius: 10px;
+    color: white;
+    width: 100%; 
+    margin: 0 auto;
+}
+
+.table-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.table thead th {
+    background-color: #444444;
+    color: white;
+    padding: 10px;
+    border-bottom: 2px solid #555555;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.table tbody tr {
+    background-color: #292929;
+    border-bottom: 1px solid #444444;
+    transition: background-color 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #383838; 
+}
+
+.table th, .table td {
+    text-align: center;
+    padding: 12px;
+    vertical-align: middle;
+}
+
+.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.btn {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin-right: 5px; 
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.modal-header {
+    background-color: #8000bf;
+}
+
+.modal-title {
+    color: white;
+    font-weight: 700;
+}
+
+.modal-body {
+    color: #a21ee0;
+    font-weight: 700;
+}

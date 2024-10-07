@@ -3,66 +3,55 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h3>Cadastro de veículos:</h3>
                     <mdb-form-control>
-                        <input mdbInput type="text" id="login" class="form-control" [(ngModel)]="carro.nome">
-                        <label mdbLabel class="form-label" for="login">Nome</label>
+                        <input mdbInput type="text" id="nome" class="form-control" [(ngModel)]="carro.nome">
+                        <label mdbLabel class="form-label" for="nome">Nome</label>
                     </mdb-form-control>
                     <mdb-form-control>
-                        <input mdbInput type="text" id="login" class="form-control" [(ngModel)]="carro.modelo">
-                        <label mdbLabel class="form-label" for="login">Modelo</label>
+                        <input mdbInput type="text" id="modelo" class="form-control" [(ngModel)]="carro.modelo">
+                        <label mdbLabel class="form-label" for="modelo">Modelo</label>
                     </mdb-form-control> 
                     <mdb-form-control>
-                        <input mdbInput type="text" id="login" class="form-control" [(ngModel)]="carro.ano">
-                        <label mdbLabel class="form-label" for="login">Ano</label>
+                        <input mdbInput type="text" id="ano" class="form-control" [(ngModel)]="carro.ano">
+                        <label mdbLabel class="form-label" for="ano">Ano</label>
                     </mdb-form-control>
-                    <div>
-                        @if (carro.marca == null) {
+                    <ng-container *ngIf="carro.marca != null">
+    <div class="row">
+        <div class="col-lg-8">
+            <p class="text-primary alert-primary">Marca: {{carro.marca.nome}}</p>
+        </div>
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-alterar-marca" (click)="buscarMarcas()">Buscar Marca</button>
+        </div>
+    </div>
+</ng-container>
 
-                            <button type="button" class="btn btn-primary" mdbRipple (click)="buscarMarcas()">Consultar Marcas</button>
-                        }@else {
 
-                           <div class="row">
+<div>
+    <button type="button" class="btn btn-primary" mdbRipple (click)="buscarProprietarios()">Procurar Proprietário</button>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Cpf</th>
+          <th>Data de Nascimento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let proprietario of carro.proprietarios; let i = index">
+          <td>{{proprietario.nome}}</td>
+          <td>{{proprietario.cpf}}</td>
+          <td>{{proprietario.data}}</td>
+          <td>
+            <button type="button" class="btn btn-danger" mdbRipple (click)="desvincularProprietario(proprietario)">Deletar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
 
-                            <div class="col-lg-8">
-
-                                <p class="text-primary alert-primary">Marca:{{carro.marca.nome}}</p>
-
-                            </div>
-
-                            <div class="col-lg-4">
-                                <button type="button" class="btn btn-warning" mdbRipple (click)="buscarMarcas()">Alterar Marca</button>
-                            </div>
-                           </div>
-                        }
-                    </div>
-
-                    <div>
-                        <button type="button" class="btn btn-primary" mdbRipple (click)="buscarProprietarios()">Procurar Proprietário</button>
-                    
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Cpf</th>
-                                    <th>Data de Nascimento</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @for (proprietarios of carro.proprietarios; track $index) {
-                                <tr>
-                                    <td>{{proprietarios.nome}}</td>
-                                    <td>{{proprietarios.cpf}}</td>
-                                    <td>{{proprietarios.data}}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger" mdbRipple (click)="desvincularProprietario(proprietarios)">Deletar</button>
-                                    </td>
-                                </tr>
-                                }   
-                            </tbody>
-                        </table>
-
-                    </div>
                 </div>
             </div>
             <button type="button" class="btn btn-primary" (click)="save()">Salvar</button>
@@ -80,7 +69,42 @@
 
     <div class="modal-body">
 
-        
+        <app-marcaslist [esconderBotoes]="true" (retorno)="retornoMarca($event)"></app-marcaslist>
+
+    </div>
+
+</ng-template>
+
+<ng-template #modalProprietario>
+
+    <div class="modal-header">
+
+        <h3 class="modal-title">Proprietário</h3>
+
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+        <app-proprietariolist [esconderBotoes]="true" (retorno)="retornoProprietario($event)"></app-proprietariolist>
+
+    </div>
+
+</ng-template>
+
+<ng-template #modalManutencao>
+
+    <div class="modal-header">
+
+        <h3 class="modal-title" id="modalLabel">Manutenção</h3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+    </div>
+
+    <div class="modal-body">
+
+        <app-manutencaolist [esconderBotoes]="true" (retorno)="retornoManutencao($event)"></app-manutencaolist>
 
     </div>
 

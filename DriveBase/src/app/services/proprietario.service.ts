@@ -10,27 +10,27 @@ export class ProprietarioService {
 
   http = inject(HttpClient);
 
-  API = "http://localhost:8081/api/proprietario";
+  API = "http://192.168.56.3:8081/api/proprietario";
 
   constructor() { }
   
-  findAll(): Observable<Proprietario[]>{
+  findAll(): Observable<Proprietario[]> {
     return this.http.get<Proprietario[]>(this.API+"/findAll");
   }
 
-  delete(id: number): Observable<String>{
-    return this.http.delete<String>(this.API+"/delete/"+id,{responseType: 'text' as 'json'});
+  delete(id: number): Observable<string> {
+    return this.http.delete<string>(this.API+"/delete/"+id,{ responseType: 'text' as 'json'});
   }
 
-  save(proprietario: Proprietario): Observable<String>{
-    return this.http.post<string>(this.API+"/save",proprietario,{responseType: 'json'});
+  save(proprietario: Proprietario): Observable<string> {
+    return this.http.post<string>(this.API+"/save", proprietario,{responseType: 'json'});
   }
 
-  update(proprietario: Proprietario, id: number): Observable<string>{
+  update(proprietario: Proprietario, id: number): Observable<string> {
     return this.http.put<string>(this.API+"/update/"+id,proprietario,{responseType: 'json'});
   }
 
-  findById(id: number): Observable<Proprietario>{
+  findById(id: number): Observable<Proprietario> {
     return this.http.get<Proprietario>(this.API+"/findById/"+id);
   }
 }

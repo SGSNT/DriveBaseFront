@@ -1,29 +1,25 @@
 <nav>
   <div class="sideNavBtns">
     <div class="sideNavMainBtns">
-      <a *ngIf="loginService.hasPermission('admin')" href="#" class="sideNavBtn">
+      <a *ngIf="loginService.hasPermission('admin')" href="admin/carros" class="sideNavBtn">
         <i class="fas fa-car"></i>
         <p>Carro</p>
       </a>
-      <a href="#" class="sideNavBtn">
+      <a *ngIf="loginService.hasPermission('admin')" href="admin/marca" class="sideNavBtn">
         <i class="fas fa-tag"></i>
         <p>Marca</p> 
       </a>
-      <a href="admin/proprietario" class="sideNavBtn">
+      <a *ngIf="loginService.hasPermission('admin')" href="admin/proprietario" class="sideNavBtn">
         <i class="fas fa-user"></i>
         <p>Proprietário</p>
       </a>
-      <a href="#" class="sideNavBtn">
+      <a *ngIf="loginService.hasPermission('admin')" href="admin/manutencao" class="sideNavBtn">
         <i class="fas fa-cog"></i>
         <p>Manutenção</p> 
       </a>
-      <a href="admin/venda" class="sideNavBtn">
-        <i class="fas fa-shopping-cart"></i>
-        <p>Venda</p>
-      </a>
-      <a href="admin/log" class="sideNavBtn">
+      <a *ngIf="loginService.hasPermission('admin')" href="admin/log" class="sideNavBtn">
         <i class="fas fa-clipboard-list"></i>
-        <p>Log Auditoria</p>
+        <p>Log</p>
       </a>
     </div>
     <div class="sideNavFooter">

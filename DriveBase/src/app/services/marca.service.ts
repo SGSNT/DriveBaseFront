@@ -10,7 +10,7 @@ export class MarcaService {
 
   http = inject(HttpClient);
 
-  API = "http://localhost:8081/api/marca";
+  API = "http://192.168.56.3:8081/api/marca";
 
   constructor() { }
 
@@ -18,11 +18,11 @@ export class MarcaService {
     return this.http.get<Marca[]>(this.API+"/findAll");
   }
 
-  delete(id: number): Observable<String>{
-    return this.http.delete<String>(this.API+"/delete/"+id,{responseType: 'text' as 'json'});
+  delete(id: number): Observable<string>{
+    return this.http.delete<string>(this.API+"/delete/"+id,{responseType: 'text' as 'json'});
   }
 
-  save(marca: Marca): Observable<String>{
+  save(marca: Marca): Observable<string>{
     return this.http.post<string>(this.API+"/save",marca,{responseType: 'json'});
   }
 

@@ -1,1 +1,48 @@
-<p>proprietariolist works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-header">
+                        <button type="button" class="btn btn-primary" mdbRipple (click)="save()">Novo</button>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Cpf</th>
+                                <th>Data de Nascimento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let proprietario of lista; let i = index">
+                                <td>{{proprietario.nome}}</td>
+                                <td>{{proprietario.cpf}}</td>
+                                <td>{{proprietario.data}}</td>
+                                <td class="text-end">
+                                    <ng-container *ngIf="escondeBotoes; else botoes">
+                                        <button type="button" class="btn btn-primary" mdbRipple (click)="select(proprietario)">Selecionar</button>
+                                    </ng-container>
+                                    <ng-template #botoes>
+                                        <button type="button" class="btn btn-primary" mdbRipple (click)="update(proprietario)">Editar</button>
+                                        <button type="button" class="btn btn-danger" mdbRipple (click)="delete(proprietario)">Deletar</button>
+                                    </ng-template>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalProprietarioDetalhe>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastrar Proprietário</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+    </div>
+    <div class="modal-body">
+        <app-proprietariodetails [proprietario]="proprietarioEdit" (retorno)="retornoDetalhe($event)"></app-proprietariodetails>
+    </div>
+</ng-template>

@@ -1,4 +1,4 @@
-import { Component, inject, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, TemplateRef, ViewChild } from '@angular/core';
 import { Carro } from '../../../models/carro';
 import { RouterLink } from '@angular/router';
 import { CarrosdetailsComponent } from "../carrosdetails/carrosdetails.component";
@@ -17,13 +17,17 @@ import Swal from 'sweetalert2';
 export class CarroslistComponent {
 
   lista: Carro[] = [];
-  carroEdit: Carro = new Carro(0,"","","",new Marca(),[]);
-  modalService = inject(MdbModalService);
+  carroEdit: Carro = new Carro(0,"","","",new Marca(),[],[]);
 
+  modalService = inject(MdbModalService);
   @ViewChild("modalCarroDetalhe") modalCarroDetalhe!: TemplateRef<any>;
   modalRef!: MdbModalRef<any>;
 
   carroService = inject(CarrosService);
+
+  @Input("esconderBotoes") escondeBotoes: boolean = false;
+  @Output("retorno") retorno = new EventEmitter<any>(); 
+  
 
   constructor(){
      
@@ -63,7 +67,7 @@ export class CarroslistComponent {
 
       Swal.fire({
 
-        title: 'Ocorreu um erro!',
+        title: 'Error',
         icon: 'error',
         confirmButtonText: 'Ok',
 
@@ -101,6 +105,7 @@ export class CarroslistComponent {
 
               });
 
+            
               this.findAll();
 
             },
@@ -109,7 +114,8 @@ export class CarroslistComponent {
 
               Swal.fire({
 
-                title: 'Ocorreu um erro!',
+                title: 'Erro!',
+                text: 'Erro ao excluir o carro!',
                 icon: 'error',
                 confirmButtonText: 'Ok',
 
@@ -127,7 +133,7 @@ export class CarroslistComponent {
 
     save(){
 
-      this.carroEdit = new Carro(0,"","","",new Marca(),[]);
+      this.carroEdit = new Carro(0,"","","",new Marca(),[],[]);
       this.modalRef = this.modalService.open(this.modalCarroDetalhe);
     }
 

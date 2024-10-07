@@ -9,24 +9,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ManutencaoService } from '../../../services/manutencao.service';
 import Swal from 'sweetalert2';
 import { Proprietario } from '../../../models/proprietario';
+import { CarroslistComponent } from '../../carros/carroslist/carroslist.component';
 
 @Component({
   selector: 'app-manutencaodetails',
   standalone: true,
-  imports: [MdbModalModule,MdbFormsModule,FormsModule,],
+  imports: [MdbModalModule,MdbFormsModule,FormsModule,CarroslistComponent],
   templateUrl: './manutencaodetails.component.html',
   styleUrl: './manutencaodetails.component.scss'
 })
 export class ManutencaodetailsComponent {
 
-  @Input("manutencao") manutencao: Manutencao = new Manutencao(0,"","",0,new Carro(0,"","","",new Marca(),[]));
+  @Input("manutencao") manutencao: Manutencao = new Manutencao(0,"","",0,new Carro(0,"","","",new Marca(),[],[]));
   @Output("retorno") retorno = new EventEmitter<any>();
 
   router = inject(ActivatedRoute);
   router2 = inject(Router);
 
   modalService = inject(MdbModalService);
-  @ViewChild("modalManutencao") modalManutencao!: TemplateRef<any>;
+  @ViewChild("modalCarros") modalCarros!: TemplateRef<any>;
   modalRef!: MdbModalRef<any>;
 
   manutencaoService = inject(ManutencaoService);
@@ -146,4 +147,5 @@ export class ManutencaodetailsComponent {
 
   }
 
+  
 }

@@ -12,31 +12,30 @@ import Swal from 'sweetalert2';
 import { Marca } from '../../../models/marca';
 import { ProprietariolistComponent } from '../../proprietario/proprietariolist/proprietariolist.component';
 import { Proprietario } from '../../../models/proprietario';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-carrosdetails',
   standalone: true,
-  imports: [MdbFormsModule,FormsModule,MarcaslistComponent,ManutencaolistComponent,ProprietariolistComponent  ],
+  imports: [MdbFormsModule,FormsModule,MarcaslistComponent,ManutencaolistComponent,ProprietariolistComponent,CommonModule],
   templateUrl: './carrosdetails.component.html',
   styleUrl: './carrosdetails.component.scss'
 })
 export class CarrosdetailsComponent {
 
-  @Input("carro") carro: Carro = new Carro(0,"","","",new Marca(),[]);
+  @Input("carro") carro: Carro = new Carro(0,"","","",new Marca(),[],[]);
   @Output("retorno") retorno = new EventEmitter<any>();
   router = inject(ActivatedRoute);
   router1 = inject(Router);
 
-  //Elementos da Modal
   modalService = inject(MdbModalService);
   @ViewChild("modalManutencao") modalManutencao!: TemplateRef<any>;
-  @ViewChild("modalMarcas") modalMarca!: TemplateRef<any>;
+  @ViewChild("modalMarca") modalMarca!: TemplateRef<any>;
   @ViewChild("modalProprietario") modalProprietario!: TemplateRef<any>;
-  @ViewChild("modalVenda") modalVenda!: TemplateRef<any>;
   modalRef!: MdbModalRef<any>;
 
   carroService = inject(CarrosService);
-
+ 
   constructor(){
 
     let id = this.router.snapshot.params['id'];
@@ -78,7 +77,7 @@ export class CarrosdetailsComponent {
             icon: 'success',
             confirmButtonText: 'Ok',
           });
-
+          
           this.router1.navigate(['admin/carros'], {state: {carroEditado: this.carro}});
           this.retorno.emit(this.carro);
         },
@@ -135,10 +134,6 @@ export class CarrosdetailsComponent {
     this.modalRef = this.modalService.open(this.modalProprietario, {modalClass: 'modal-lg'});
   }
 
-  buscarVendas(){
-    this.modalRef = this.modalService.open(this.modalVenda, {modalClass: 'modal-lg'});
-  }
-
   retornoMarca(marca: Marca){
     this.carro.marca = marca;
     this.modalRef.close();
@@ -149,9 +144,30 @@ export class CarrosdetailsComponent {
     this.modalRef.close();
   }
 
+  retornoManutencao(manutencao: Manutencao[]){
+
+    this.carro.manutencao = manutencao;
+    this.modalRef.close();
+
+  }
+
+
   desvincularProprietario(proprietario: Proprietario){
     let index = this.carro.proprietarios.findIndex(p => {return p.id == proprietario.id});
     this.carro.proprietarios.splice(index,1);
+  }
+
+  desvincularManutencao(manutencao: Manutencao){
+
+    let index = this.carro.manutencao.findIndex(m => {return m.id == manutencao.id});
+    this.carro.manutencao.splice(index,1);
+
+  }
+
+  desvincularMarca(marca: Marca){
+    if (this.carro.marca.id === marca.id) {
+      this.carro.marca = new Marca();
+    }
   }
 
 }

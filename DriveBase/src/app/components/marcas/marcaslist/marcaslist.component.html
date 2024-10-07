@@ -1,1 +1,47 @@
-<p>marcaslist works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-header">
+                        <button type="button" class="btn btn-primary" mdbRipple (click)="save()">Novo</button>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Cnpj</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (marca of lista; track $index) {
+                            <tr>
+                                <td>{{marca.nome}}</td>
+                                <td>{{marca.cnpj}}</td>
+                                <td class="direita">
+                                    @if (escondeBotoes) {
+                                        <button type="button" class="btn btn-primary" mdbRipple (click)="select(marca)"></button>
+                                    }@else {
+                                        <button type="button" class="btn btn-primary" mdbRipple (click)="update(marca)">Editar</button>
+                                        <button type="button" class="btn btn-danger" mdbRipple (click)="delete(marca)">Deletar</button>
+                                    }
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalMarcaDetalhe>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastrar</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+    </div>
+    <div class="modal-body">
+        <app-marcasdetails [marca]="marcaEdit" (retorno)="retornoDetalhe($event)"></app-marcasdetails>
+    </div>
+</ng-template>

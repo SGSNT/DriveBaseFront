@@ -1,1 +1,35 @@
-<p>log works!</p>
+<section>
+  <header>
+    <h2>Lista de Logs</h2>
+  </header>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Usuário</th>
+          <th>Role</th>
+          <th>Ação</th>
+          <th>Entidade</th>
+          <th>Descrição</th>
+          <th>Data/Hora</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of logs">
+          <td>{{ log.idLog }}</td>
+          <td>{{ log.username }}</td>
+          <td>{{ log.roleUser }}</td>
+          <td>{{ log.acao }}</td>
+          <td>{{ log.entity }}</td>
+          <td>{{ log.descricao }}</td>
+          <td>{{ log.timestamp }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</section>
+
+<section *ngIf="!logs || !logs.length">
+  <p>Nenhum log encontrado.</p>
+</section>

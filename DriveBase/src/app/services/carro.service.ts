@@ -10,7 +10,7 @@ export class CarrosService {
 
   http = inject(HttpClient);
 
-  API = "http://localhost:8081/api/carro";
+  API = "http://192.168.56.3:8081/api/carro";
 
   constructor() { }
 
@@ -18,11 +18,11 @@ export class CarrosService {
     return this.http.get<Carro[]>(this.API+"/findAll");
   }
 
-  delete(id: number): Observable<String>{
-    return this.http.delete<String>(this.API+"/delete/"+id,{responseType: 'text' as 'json'});
+  delete(id: number): Observable<string>{
+    return this.http.delete<string>(this.API+"/delete/"+id,{responseType: 'text' as 'json'});
   }
 
-  save(carro: Carro): Observable<String>{
+  save(carro: Carro): Observable<string>{
     return this.http.post<string>(this.API+"/save",carro,{responseType: 'json'});
   }
 

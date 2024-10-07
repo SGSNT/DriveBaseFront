@@ -11,7 +11,7 @@ import { Usuario } from './usuario';
 export class LoginService {
 
   http = inject(HttpClient);
-  API = "http://localhost:8081/api/login";
+  API = "http://192.168.56.3:8081/api/login";
 
 
   constructor() { }
@@ -33,12 +33,17 @@ export class LoginService {
     return localStorage.getItem('token');
   }
 
-  jwtDecode() {
-    let token = this.getToken();
+  jwtDecode(): JwtPayload | null {
+    const token = this.getToken();
     if (token) {
-      return jwtDecode<JwtPayload>(token);
+      try {
+        return jwtDecode<JwtPayload>(token);
+      } catch (e) {
+        console.error('Erro ao decodificar o token JWT', e);
+        return null;
+      }
     }
-    return "";
+    return null;
   }
 
   hasPermission(role: string) {

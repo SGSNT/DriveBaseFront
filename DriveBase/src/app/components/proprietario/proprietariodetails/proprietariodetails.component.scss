@@ -1,0 +1,74 @@
+.container .card {
+    background-color: #292929;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border: none;
+    margin-top: 30px;
+    color: #ffffff;
+}
+
+.container .card h3 {
+    color: #ffffff;
+}
+
+.mdb-form-control {
+    margin-bottom: 15px;
+}
+
+.mdb-form-control input {
+    background-color: #333333;
+    border: 1px solid #444444;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.mdb-form-control label {
+    color: #cccccc;
+}
+
+.btn {
+    font-size: 14px;
+    padding: 10px 15px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004080;
+}
+
+.modal-header {
+    background-color: #8000bf;
+    color: white;
+    border-bottom: 1px solid #a21ee0;
+}
+
+.modal-title {
+    font-weight: 700;
+}
+
+.modal-body {
+    color: #a21ee0;
+    font-weight: 700;
+}
+
+.modal-body p {
+    margin-bottom: 10px;
+}
+
+.modal-body .row {
+    margin-bottom: 15px;
+}
+
+.modal-body .col-lg-8 p {
+    margin: 0;
+}

@@ -1,16 +1,20 @@
 .navbar {
+  position: fixed; /* Fixa a navbar no topo */
+  top: 0; /* Mantém a navbar no topo */
+  width: 100%; /* Largura total */
   height: 95px; 
   padding: 0 20px; 
   background-color: #292929; 
+  z-index: 1000; /* Garante que fique acima de outros elementos */
 }
 
 .navbar-brand {
   display: flex;
-  align-items: center;
+  align-items: center; /* Alinha verticalmente o conteúdo */
 }
 
 .navbar-brand img {
   height: 130px; 
   width: 160px;
-  margin-left: -100px;
+  margin-left: -100px; /* Ajuste conforme necessário */
 }
